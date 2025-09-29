@@ -7,7 +7,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
 import '../../styles/formularios.shared.css';
 
-export default function FormulariosList(): JSX.Element {
+export default function FormulariosList() {
   const { user } = useAuth();
   const isAdmin = useMemo(() => user?.rol === 'admin', [user]);
   const { push } = useToast();

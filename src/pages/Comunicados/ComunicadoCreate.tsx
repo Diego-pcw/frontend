@@ -15,7 +15,7 @@ type Form = {
   estado: 'activo' | 'inactivo';
 };
 
-export default function ComunicadoCreate(): JSX.Element {
+export default function ComunicadoCreate() {
   const { register, handleSubmit, formState: { errors, isSubmitting }, watch } = useForm<Form>({
     defaultValues: { estado: 'activo', hora_publicacion: '08:00' }
   });

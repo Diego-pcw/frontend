@@ -5,7 +5,7 @@ import { comunicadoService } from '../../services/comunicado.service';
 import type { Comunicado } from '../../types';
 import { useAuth } from '../../context/AuthContext';
 
-export default function ComunicadoDetail(): JSX.Element {
+export default function ComunicadoDetail() {
   const { id } = useParams<{ id: string }>();
   const [item, setItem] = useState<Comunicado | null>(null);
   const [loading, setLoading] = useState<boolean>(false);

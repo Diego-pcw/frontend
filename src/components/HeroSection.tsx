@@ -15,8 +15,7 @@ export default function HeroSection({
   subtitle,
   children,
   className = ''
-}: HeroSectionProps): JSX.Element {
-  // patrón SVG simple y seguro (escapado). Si quieres otro patrón, reemplaza aquí.
+}: HeroSectionProps) {
   const patternSvg = encodeURIComponent(
     `<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'>
       <g fill='none' fill-rule='evenodd'>
@@ -34,7 +33,6 @@ export default function HeroSection({
       : 'linear-gradient(135deg, var(--primary-blue), var(--secondary-blue))',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    /* NOTE: fixed causes problems on mobile — we keep scroll by default and override on large screens */
     backgroundAttachment: 'scroll',
     color: 'white',
     padding: '80px 32px',
@@ -44,7 +42,6 @@ export default function HeroSection({
 
   return (
     <section className={`hero-section ${className}`} style={bgStyle}>
-      {/* Patrón decorativo con data-url SVG */}
       <div
         aria-hidden="true"
         style={{
@@ -96,7 +93,7 @@ export default function HeroSection({
           marginRight: 'auto'
         }}>
           {[
-            { value: '500+', label: 'Beneficiados' }, //se puede agregar mas
+            { value: '500+', label: 'Beneficiados' },
           ].map((s) => (
             <div key={s.label} style={{
               background: 'rgba(255,255,255,0.12)',
@@ -113,7 +110,6 @@ export default function HeroSection({
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div style={{
         position: 'absolute',
         bottom: 22,
@@ -138,13 +134,9 @@ export default function HeroSection({
           40% { transform: translateX(-50%) translateY(-8px); }
           60% { transform: translateX(-50%) translateY(-4px); }
         }
-
-        /* large screens: allow parallax-like fixed background (optional) */
         @media (min-width: 1200px) {
           .hero-section { background-attachment: fixed; }
         }
-
-        /* mobile safety: force scroll for background & reduced padding */
         @media (max-width: 768px) {
           .hero-section { background-attachment: scroll !important; padding: 56px 18px; }
         }

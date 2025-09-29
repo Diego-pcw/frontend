@@ -16,7 +16,7 @@ type FormInputs = {
   imagen?: FileList;
 };
 
-export default function ComunicadoEdit(): JSX.Element {
+export default function ComunicadoEdit() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
@@ -58,7 +58,7 @@ export default function ComunicadoEdit(): JSX.Element {
           hora_publicacion: hora,
           publicador: data.publicador ?? '',
           entidad: data.entidad ?? '',
-          estado: data.estado ?? 'activo',
+          estado: (data.estado as "activo" | "inactivo") ?? "activo",
         });
         if (data.imagen) {
           setExistingImageUrl(`${apiBase}/storage/${data.imagen}`);
@@ -141,12 +141,11 @@ export default function ComunicadoEdit(): JSX.Element {
               <label className="comunicado-label">Reemplazar imagen (jpg, png | &lt;= 2MB)</label>
               <input className="comunicado-file" type="file" accept="image/jpeg,image/png" {...register('imagen', {
                 validate: {
-                  lessThan2MB: (files: FileList) =>
-                    !files[0] || files[0].size <= 2 * 1024 * 1024 || 'El archivo debe pesar menos de 2MB',
-                  acceptedFormats: (files: FileList) =>
-                    !files[0] ||
-                    ['image/jpeg', 'image/png'].includes(files[0].type) ||
-                    'Solo se permiten imágenes JPG o PNG',
+                  lessThan2MB: (files?: FileList) =>
+                    !files || Array.from(files).every(file => file.size < 2 * 1024 * 1024) || "El archivo debe pesar menos de 2MB",
+                                  
+                  acceptedFormats: (files?: FileList) =>
+                    !files || Array.from(files).every(file => ["image/jpeg", "image/png"].includes(file.type)) || "Solo se permiten imágenes JPG o PNG",
                 },
               })} />
               {errors.imagen && <p className="comunicado-error" style={{ marginTop: 4 }}>{(errors.imagen as any).message as string}</p>}

@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/logomuni.png';
 
-export default function Header(): JSX.Element {
+export default function Header() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -213,7 +213,7 @@ export default function Header(): JSX.Element {
         </div>
       </header>
 
-      <style jsx>{`
+      <style>{`
         @media (max-width: 1024px) {
           .sidebar {
             transform: translateX(-100%);

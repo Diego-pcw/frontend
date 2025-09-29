@@ -6,7 +6,7 @@ import '../styles/users.shared.css';
 
 type Form = { email: string; password: string };
 
-export default function Login(): JSX.Element {
+export default function Login() {
   const { login, loading } = useAuth();
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<Form>();

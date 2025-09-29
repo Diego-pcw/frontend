@@ -1,7 +1,7 @@
 // src/components/ToastRoot.tsx
 import React from 'react';
 import { useToast } from '../context/ToastContext';
-import type { ToastItem } from '../context/ToastContext'; // <-- import type
+import type { ToastItem } from '../context/ToastContext';
 
 function ToastView({ t }: { t: ToastItem }) {
   return (
@@ -34,7 +34,7 @@ function ToastView({ t }: { t: ToastItem }) {
   );
 }
 
-export default function ToastRoot(): JSX.Element {
+export default function ToastRoot() {
   const { toasts } = useToast();
 
   return (

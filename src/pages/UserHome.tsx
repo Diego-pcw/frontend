@@ -9,7 +9,7 @@ import heroImg from '../assets/pollos.jpeg'; // <-- importa la imagen
 import WhatsAppButton from '../components/WhatsAppButton';
 import '../styles/whatsapp.css';
 
-export default function UserHome(): JSX.Element {
+export default function UserHome() {
   const { user } = useAuth();
 
   return (

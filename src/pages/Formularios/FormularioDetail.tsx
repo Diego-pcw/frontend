@@ -5,7 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import type { Formulario } from '../../types';
 import '../../styles/formularios.shared.css';
 
-export default function FormularioDetail(): JSX.Element {
+export default function FormularioDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -85,7 +85,9 @@ export default function FormularioDetail(): JSX.Element {
 
             <div style={{ background: 'var(--soft-white)', padding: 12, borderRadius: 8 }}>
               <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: 13 }}>Creado</p>
-              <p style={{ margin: '6px 0 0' }}>{new Date(item.created_at).toLocaleString()}</p>
+              <p style={{ margin: '6px 0 0' }}>
+                {item.created_at ? new Date(item.created_at).toLocaleString() : "Sin fecha"}
+              </p>
             </div>
 
             <div style={{ gridColumn: '1 / -1', background: 'var(--pure-white)' }}>

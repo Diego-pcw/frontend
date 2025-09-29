@@ -20,7 +20,7 @@ type Form = {
   adicional?: string;
 };
 
-export default function FormularioCreate(): JSX.Element {
+export default function FormularioCreate() {
   const navigate = useNavigate();
   const { push } = useToast(); 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<Form>({

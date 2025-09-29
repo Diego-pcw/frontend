@@ -195,7 +195,7 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
         </footer>
       </main>
 
-      <style jsx>{`
+      <style>{`
         @media (max-width: 768px) {
           footer > div:first-child {
             grid-template-columns: 1fr !important;

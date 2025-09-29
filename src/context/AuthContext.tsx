@@ -13,31 +13,35 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+type ApiPayload = {
+  user?: User;
+  data?: User | Record<string, unknown>;
+  [key: string]: any;
+};
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Refresh profile: normaliza distintas formas de respuesta del backend
   const refreshProfile = useCallback(async (): Promise<void> => {
     setLoading(true);
     try {
       const res = await authService.profile();
-      const payload = res?.data ?? null;
-      let u: any = null;
+      const payload: ApiPayload | null = res?.data ?? null;
+      let u: User | null = null;
 
       if (!payload) {
         u = null;
       } else if (payload.user) {
-        u = payload.user;
+        u = payload.user as User;
       } else if (payload.data && typeof payload.data === 'object' && !Array.isArray(payload.data)) {
-        u = payload.data;
+        u = payload.data as User;
       } else {
-        u = payload;
+        u = payload as User;
       }
 
-      setUser(u as User);
-    } catch (err) {
-      // falló: limpiar token y estado de usuario
+      setUser(u);
+    } catch {
       localStorage.removeItem('token');
       setUser(null);
     } finally {
@@ -57,17 +61,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
         return;
       }
-      // si hay token, intentar cargar perfil
       try {
         await refreshProfile();
       } catch {
-        // ignore here; refreshProfile ya maneja limpieza
+        // ignore
       }
     };
 
     init();
 
-    // Listener global para logout emitido por api interceptor
     const handleExternalLogout = () => {
       localStorage.removeItem('token');
       setUser(null);
@@ -79,7 +81,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       mounted = false;
       window.removeEventListener('auth:logout', handleExternalLogout);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshProfile]);
 
   const login = useCallback(async (email: string, password: string) => {
@@ -90,9 +91,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (token) {
         localStorage.setItem('token', token);
       }
-      // después de guardar token, refrescar perfil
       await refreshProfile();
-      // opcional: navega a /dashboard aquí si lo quieres (no lo hago en el context)
     } finally {
       setLoading(false);
     }
@@ -102,7 +101,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       await authService.logout();
     } catch {
-      // ignore errors from backend logout
+      // ignore
     } finally {
       localStorage.removeItem('token');
       setUser(null);

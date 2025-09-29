@@ -6,7 +6,7 @@ import type { Comunicado, Paginated } from '../../types';
 import { useAuth } from '../../context/AuthContext';
 import '../../styles/comunicados.shared.css';
 
-export default function ComunicadosList(): JSX.Element {
+export default function ComunicadosList() {
   const { user } = useAuth();
   const isAdmin = user?.rol === 'admin';
 

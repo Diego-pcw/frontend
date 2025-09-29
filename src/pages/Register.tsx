@@ -6,7 +6,7 @@ import '../styles/users.shared.css';
 
 type Form = { name: string; email: string; password: string; password_confirmation?: string; rol?: string };
 
-export default function Register(): JSX.Element {
+export default function Register() {
   const navigate = useNavigate();
   const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<Form>();
   const pw = watch('password');

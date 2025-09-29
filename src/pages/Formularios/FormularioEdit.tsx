@@ -7,7 +7,7 @@ import type { Formulario } from '../../types';
 import '../../styles/formularios.shared.css';
 import { useToast } from '../../context/ToastContext';
 
-export default function FormularioEdit(): JSX.Element {
+export default function FormularioEdit() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);

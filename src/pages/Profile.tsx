@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import '../styles/users.shared.css'; // asegúrate de importar estilos si no están globales
 
-export default function Profile(): JSX.Element {
+export default function Profile() {
   const { user, logout, loading } = useAuth();
   const navigate = useNavigate();
 

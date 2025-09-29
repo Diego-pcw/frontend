@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import type { Formulario, Paginated } from '../types';
 import '../styles/dashboard.shared.css'; // asume que ya existe
 
-export default function Dashboard(): JSX.Element {
+export default function Dashboard() {
   const { user } = useAuth();
   const isAdmin = useMemo(() => user?.rol === 'admin', [user]);
 
