@@ -30,8 +30,7 @@ export default function ComunicadoDetail() {
   if (!item) return <div style={{ padding: 20 }}>No encontrado</div>;
 
   // 🔑 Base pública configurable (quita /api si está presente)
-  const publicBase = (import.meta.env.VITE_API_URL || window.location.origin)
-    .replace(/\/api\/?$/, '');
+  const publicBase = window.location.origin;
 
   return (
     <div style={{ padding: 20, maxWidth: 900, margin: '0 auto' }}>

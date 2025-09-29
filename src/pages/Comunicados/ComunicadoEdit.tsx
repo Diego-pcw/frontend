@@ -39,8 +39,7 @@ export default function ComunicadoEdit() {
   }, [imagenFiles]);
 
   // 🔑 Base pública configurable (quita /api si está presente)
-  const publicBase = (import.meta.env.VITE_API_URL || window.location.origin)
-    .replace(/\/api\/?$/, '');
+  const publicBase = window.location.origin;
 
   useEffect(() => {
     if (!id) return;
