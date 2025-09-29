@@ -1,0 +1,53 @@
+/* WhatsApp floating button - redondo con color oficial */
+.whatsapp-fab {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;   /* ancho fijo */
+  height: 60px;  /* alto fijo */
+  border-radius: 50%; /* círculo perfecto */
+  background: #25D366; /* color oficial WhatsApp */
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.12);
+  border: 0;
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+  pointer-events: auto;
+  font-size: 22px; /* tamaño del ícono */
+}
+
+/* icon inside */
+.whatsapp-fab svg {
+  display: block;
+  color: white;
+  width: 28px;
+  height: 28px;
+}
+
+/* ocultar label */
+.whatsapp-fab .whatsapp-fab-label {
+  display: none;
+}
+
+/* hover */
+.whatsapp-fab:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(2,6,23,0.2);
+  opacity: 0.95;
+}
+
+/* versión más pequeña en móviles */
+@media (max-width: 480px) {
+  .whatsapp-fab {
+    width: 48px;
+    height: 48px;
+  }
+  .whatsapp-fab svg {
+    width: 24px;
+    height: 24px;
+  }
+}
