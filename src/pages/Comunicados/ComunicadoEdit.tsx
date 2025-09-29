@@ -38,9 +38,6 @@ export default function ComunicadoEdit() {
     }
   }, [imagenFiles]);
 
-  // 🔑 Base pública (Laravel backend en Hostinger)
-  const backendBase = import.meta.env.VITE_API_URL;
-
   useEffect(() => {
     if (!id) return;
     setLoading(true);
@@ -57,7 +54,10 @@ export default function ComunicadoEdit() {
           estado: (data.estado as 'activo' | 'inactivo') ?? 'activo',
         });
         if (data.imagen) {
-          setExistingImageUrl(`${backendBase}/storage/${data.imagen}`);
+          setExistingImageUrl(
+            `${(import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000')
+              .replace(/\/api\/?$/, '')}/storage/${data.imagen}`
+          );
         } else {
           setExistingImageUrl(null);
         }
@@ -67,7 +67,7 @@ export default function ComunicadoEdit() {
         alert('Error cargando comunicado');
       })
       .finally(() => setLoading(false));
-  }, [id, reset, backendBase]);
+  }, [id, reset]);
 
   const onSubmit = async (data: FormInputs) => {
     if (!id) { alert('ID inválido'); return; }
