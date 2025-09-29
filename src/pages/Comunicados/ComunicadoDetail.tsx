@@ -1,4 +1,3 @@
-// src/pages/Comunicados/ComunicadoDetail.tsx
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { comunicadoService } from '../../services/comunicado.service';
@@ -30,7 +29,8 @@ export default function ComunicadoDetail() {
   if (error) return <div style={{ padding: 20, color: 'red' }}>{error}</div>;
   if (!item) return <div style={{ padding: 20 }}>No encontrado</div>;
 
-  const apiBase = (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000').replace(/\/api\/?$/, '');
+  // Para imágenes usamos directamente la raíz pública del sitio
+  const publicBase = window.location.origin;
 
   return (
     <div style={{ padding: 20, maxWidth: 900, margin: '0 auto' }}>
@@ -42,7 +42,6 @@ export default function ComunicadoDetail() {
           padding: 24,
         }}
       >
-        {/* Título */}
         <h1
           style={{
             fontSize: '1.8rem',
@@ -54,11 +53,10 @@ export default function ComunicadoDetail() {
           {item.titulo}
         </h1>
 
-        {/* Imagen */}
         {item.imagen && (
           <div style={{ marginBottom: 20, textAlign: 'center' }}>
             <img
-              src={`${apiBase}/storage/${item.imagen}`}
+              src={`${publicBase}/storage/${item.imagen}`}
               alt={item.titulo}
               style={{
                 width: '100%',
@@ -70,7 +68,6 @@ export default function ComunicadoDetail() {
           </div>
         )}
 
-        {/* Meta info */}
         <div
           style={{
             fontSize: '0.9rem',
@@ -97,14 +94,13 @@ export default function ComunicadoDetail() {
           </span>
         </div>
 
-        {/* Descripción */}
         <section style={{ marginBottom: 20 }}>
           <h3 style={{ marginBottom: 8, color: '#333' }}>Descripción</h3>
           <div
             style={{
-              whiteSpace: 'pre-wrap',      // respeta saltos manuales
-              wordBreak: 'break-word',     // corta palabras largas si exceden el ancho
-              overflowWrap: 'anywhere',    // alternativa moderna para asegurar quiebre
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word',
+              overflowWrap: 'anywhere',
               lineHeight: 1.6,
               color: '#444',
               background: '#fafafa',
@@ -117,7 +113,6 @@ export default function ComunicadoDetail() {
           </div>
         </section>
 
-        {/* Acciones */}
         <div style={{ marginTop: 16, display: 'flex', gap: 12 }}>
           <Link to="/comunicados" className="btn">
             ← Volver
