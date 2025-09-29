@@ -29,8 +29,9 @@ export default function ComunicadoDetail() {
   if (error) return <div style={{ padding: 20, color: 'red' }}>{error}</div>;
   if (!item) return <div style={{ padding: 20 }}>No encontrado</div>;
 
-  // Para imágenes usamos directamente la raíz pública del sitio
-  const publicBase = window.location.origin;
+  // 🔑 Base pública configurable (quita /api si está presente)
+  const publicBase = (import.meta.env.VITE_API_URL || window.location.origin)
+    .replace(/\/api\/?$/, '');
 
   return (
     <div style={{ padding: 20, maxWidth: 900, margin: '0 auto' }}>
