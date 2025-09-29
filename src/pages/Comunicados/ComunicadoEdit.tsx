@@ -38,8 +38,8 @@ export default function ComunicadoEdit() {
     }
   }, [imagenFiles]);
 
-  // 🔑 Base pública configurable (quita /api si está presente)
-  const publicBase = window.location.origin;
+  // 🔑 Base pública (Laravel backend en Hostinger)
+  const backendBase = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     if (!id) return;
@@ -57,7 +57,7 @@ export default function ComunicadoEdit() {
           estado: (data.estado as 'activo' | 'inactivo') ?? 'activo',
         });
         if (data.imagen) {
-          setExistingImageUrl(`${publicBase}/storage/${data.imagen}`);
+          setExistingImageUrl(`${backendBase}/storage/${data.imagen}`);
         } else {
           setExistingImageUrl(null);
         }
@@ -67,7 +67,7 @@ export default function ComunicadoEdit() {
         alert('Error cargando comunicado');
       })
       .finally(() => setLoading(false));
-  }, [id, reset, publicBase]);
+  }, [id, reset, backendBase]);
 
   const onSubmit = async (data: FormInputs) => {
     if (!id) { alert('ID inválido'); return; }

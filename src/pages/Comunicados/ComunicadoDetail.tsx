@@ -29,8 +29,8 @@ export default function ComunicadoDetail() {
   if (error) return <div style={{ padding: 20, color: 'red' }}>{error}</div>;
   if (!item) return <div style={{ padding: 20 }}>No encontrado</div>;
 
-  // 🔑 Base pública configurable (quita /api si está presente)
-  const publicBase = window.location.origin;
+  // 🔑 Base pública (Laravel backend en Hostinger)
+  const backendBase = import.meta.env.VITE_API_URL;
 
   return (
     <div style={{ padding: 20, maxWidth: 900, margin: '0 auto' }}>
@@ -56,7 +56,7 @@ export default function ComunicadoDetail() {
         {item.imagen && (
           <div style={{ marginBottom: 20, textAlign: 'center' }}>
             <img
-              src={`${publicBase}/storage/${item.imagen}`}
+              src={`${backendBase}/storage/${item.imagen}`}
               alt={item.titulo}
               style={{
                 width: '100%',
