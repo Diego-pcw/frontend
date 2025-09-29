@@ -1,7 +1,7 @@
 // src/components/Layout.tsx
 import React from 'react';
 import Header from './Header';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
   return (
@@ -69,8 +69,8 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
                   borderRadius: '6px',
                   fontSize: '12px'
                 }}>
-                  📞 +51 935 915 159 <br></br>
-                  📞 +51 925 409 626 <br></br>
+                  📞 +51 935 915 159 <br />
+                  📞 +51 925 409 626 <br />
                   📞 +51 992 725 511
                 </div>
               </div>
@@ -87,38 +87,38 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
                 🔗 Enlaces Rápidos
               </h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <a href="/" style={{ 
+                <Link to="/" style={{ 
                   color: '#cbd5e1', 
                   textDecoration: 'none', 
                   fontSize: '14px',
                   transition: 'color 0.2s ease'
                 }}>
                   🏠 Inicio
-                </a>
-                <a href="/comunicados" style={{ 
+                </Link>
+                <Link to="/comunicados" style={{ 
                   color: '#cbd5e1', 
                   textDecoration: 'none', 
                   fontSize: '14px',
                   transition: 'color 0.2s ease'
                 }}>
                   📢 Comunicados
-                </a>
-                <a href="/formularios" style={{ 
+                </Link>
+                <Link to="/formularios" style={{ 
                   color: '#cbd5e1', 
                   textDecoration: 'none', 
                   fontSize: '14px',
                   transition: 'color 0.2s ease'
                 }}>
                   📊 Formularios
-                </a>
-                <a href="/formularios/create" style={{ 
+                </Link>
+                <Link to="/formularios/create" style={{ 
                   color: '#cbd5e1', 
                   textDecoration: 'none', 
                   fontSize: '14px',
                   transition: 'color 0.2s ease'
                 }}>
                   📝 Registro Avícola
-                </a>
+                </Link>
               </div>
             </div>
 
