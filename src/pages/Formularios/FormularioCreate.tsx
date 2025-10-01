@@ -60,7 +60,7 @@ export default function FormularioCreate() {
     <div className="form-page">
       <div className="form-card">
         <div className="form-card-header">
-          <h2 className="form-title">Crear Formulario</h2>
+          <h2 className="form-title">Formulario</h2>
           <p className="form-subtitle">Registra la solicitud con los datos solicitados</p>
         </div>
 
@@ -97,21 +97,21 @@ export default function FormularioCreate() {
             </div>
 
             <div className="form-field">
-              <label className="form-label">Asociación (opcional)</label>
+              <label className="form-label">Asociación</label>
               <input className="form-input" {...register('asociacion')} />
             </div>
 
             <div className="form-field form-checkboxes form-field-full">
               <label className="form-label">Documentos</label>
               <div className="checkbox-group">
-                <label className="checkbox-item"><input type="checkbox" {...register('propiedad')} /> <span>Propiedad</span></label>
-                <label className="checkbox-item"><input type="checkbox" {...register('titulo')} /> <span>Título</span></label>
-                <label className="checkbox-item"><input type="checkbox" {...register('reg_publico')} /> <span>Registro público</span></label>
+                <label className="checkbox-item"><input type="checkbox" {...register('propiedad')} /> <span>¿El terreno es de su propiedad?</span></label>
+                <label className="checkbox-item"><input type="checkbox" {...register('titulo')} /> <span> ¿Cuenta con Título?</span></label>
+                <label className="checkbox-item"><input type="checkbox" {...register('reg_publico')} /> <span>Inscrito a Registro público</span></label>
               </div>
             </div>
 
             <div className="form-field">
-              <label className="form-label">Charlas</label>
+              <label className="form-label">¿Le interesa participar en Charlas?</label>
               <select className="form-input" {...register('charlas')}>
                 <option value="virtual">virtual</option>
                 <option value="presencial">presencial</option>

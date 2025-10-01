@@ -54,7 +54,7 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
                 Municipalidad Distrital de Coronel Gregorio Albarracín Lanchipa.
                 Comprometidos con el desarrollo sostenible y el bienestar de nuestros ciudadanos.
               </p>
-              <div style={{ marginTop: '16px', display: 'flex', gap: '12px' }}>
+              <div style={{ marginTop: '16px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                 <div style={{ 
                   background: '#334155',
                   padding: '8px 12px',
@@ -87,38 +87,10 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
                 🔗 Enlaces Rápidos
               </h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <Link to="/" style={{ 
-                  color: '#cbd5e1', 
-                  textDecoration: 'none', 
-                  fontSize: '14px',
-                  transition: 'color 0.2s ease'
-                }}>
-                  🏠 Inicio
-                </Link>
-                <Link to="/comunicados" style={{ 
-                  color: '#cbd5e1', 
-                  textDecoration: 'none', 
-                  fontSize: '14px',
-                  transition: 'color 0.2s ease'
-                }}>
-                  📢 Comunicados
-                </Link>
-                <Link to="/formularios" style={{ 
-                  color: '#cbd5e1', 
-                  textDecoration: 'none', 
-                  fontSize: '14px',
-                  transition: 'color 0.2s ease'
-                }}>
-                  📊 Formularios
-                </Link>
-                <Link to="/formularios/create" style={{ 
-                  color: '#cbd5e1', 
-                  textDecoration: 'none', 
-                  fontSize: '14px',
-                  transition: 'color 0.2s ease'
-                }}>
-                  📝 Registro Avícola
-                </Link>
+                <Link to="/" style={{ color: '#cbd5e1', textDecoration: 'none', fontSize: '14px' }}>🏠 Inicio</Link>
+                <Link to="/comunicados" style={{ color: '#cbd5e1', textDecoration: 'none', fontSize: '14px' }}>📢 Comunicados</Link>
+                <Link to="/formularios" style={{ color: '#cbd5e1', textDecoration: 'none', fontSize: '14px' }}>📊 Formularios</Link>
+                <Link to="/formularios/create" style={{ color: '#cbd5e1', textDecoration: 'none', fontSize: '14px' }}>📝 Registro Avícola</Link>
               </div>
             </div>
 
@@ -132,25 +104,38 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
               }}>
                 🐔 Proyecto Avícola
               </h4>
-              <p style={{ 
-                fontSize: '13px', 
-                lineHeight: '1.5', 
-                opacity: '0.9',
-                marginBottom: '12px'
-              }}>
+              <p style={{ fontSize: '13px', lineHeight: '1.5', opacity: '0.9', marginBottom: '12px' }}>
                 Mejoramiento de los Servicios de Apoyo al Desarrollo Productivo 
                 en la Cadena Productiva Avícola del distrito.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <div style={{ fontSize: '12px', opacity: '0.8' }}>
-                  ✅ 500+ Productores beneficiados
-                </div>
-                <div style={{ fontSize: '12px', opacity: '0.8' }}>
-                  ✅ Capacitación especializada
-                </div>
-                <div style={{ fontSize: '12px', opacity: '0.8' }}>
-                  ✅ Mejora genética y reproductiva
-                </div>
+                <div style={{ fontSize: '12px', opacity: '0.8' }}>✅ 500+ Productores beneficiados</div>
+                <div style={{ fontSize: '12px', opacity: '0.8' }}>✅ Capacitación especializada</div>
+                <div style={{ fontSize: '12px', opacity: '0.8' }}>✅ Mejora genética y reproductiva</div>
+              </div>
+            </div>
+
+            {/* Columna 4: Google Maps */}
+            <div>
+              <h4 style={{ 
+                fontSize: '16px', 
+                fontWeight: '600', 
+                marginBottom: '16px',
+                color: '#22c55e'
+              }}>
+                📍 Ubicación
+              </h4>
+              <div style={{ borderRadius: 8, overflow: 'hidden', border: '2px solid #334155' }}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3793.5597025829643!2d-70.25805852390843!3d-18.04562608240871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915ac90158534ec1%3A0xe48f3d4f4deb2de4!2sPalacio%20De%20La%20Juventud!5e0!3m2!1ses!2spe!4v1759278547899!5m2!1ses!2spe"
+                  width="100%"
+                  height="200"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación Municipal"
+                ></iframe>
               </div>
             </div>
           </div>
@@ -181,15 +166,9 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
             </div>
             
             <div style={{ display: 'flex', gap: '16px', fontSize: '12px' }}>
-              <a href="#" style={{ color: '#94a3b8', textDecoration: 'none' }}>
-                📋 Términos de Uso
-              </a>
-              <a href="#" style={{ color: '#94a3b8', textDecoration: 'none' }}>
-                🔒 Política de Privacidad
-              </a>
-              <a href="#" style={{ color: '#94a3b8', textDecoration: 'none' }}>
-                📞 Contacto
-              </a>
+              <a href="#" style={{ color: '#94a3b8', textDecoration: 'none' }}>📋 Términos de Uso</a>
+              <a href="#" style={{ color: '#94a3b8', textDecoration: 'none' }}>🔒 Política de Privacidad</a>
+              <a href="#" style={{ color: '#94a3b8', textDecoration: 'none' }}>📞 Contacto</a>
             </div>
           </div>
         </footer>
